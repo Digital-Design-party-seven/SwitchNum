@@ -1,106 +1,102 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+
 entity OnOff is 
 	port(
-		clk:in std_logic;
-		y1,y2,y3,y4,y5,y6,y7,y8:out std_logic;
-		x:in std_logic_vector(3 downto 0);
-		pre_result:in std_logic_vector(7 downto 0);
-		out_put:out std_logic_vector(7 downto 0)
+		x1,clk:in std_logic;
+		x2:in std_logic_vector(3 downto 0);
+		y1,y2,y3,y4,y5,y6,y7,y8:out std_logic
 	);
 end OnOff;
 
 architecture bruh of OnOff is 
 signal temp:std_logic_vector(7 downto 0);
 begin 
+process(clk,x1,x2)
+begin
+		if (x1='0') and (x2 = "0001")  then
+			y1 <= '1';
+			y2 <= '0';
+			y3 <= '0';
+			y4 <= '0';
+			y5 <= '0';
+			y6 <= '0';
+			y7 <= '0';
+			y8 <= '1';
+		elsif (x1='0') and (x2 = "0010")  then
+			y1 <= '0';
+			y2 <= '1';
+			y3 <= '0';
+			y4 <= '0';
+			y5 <= '0';
+			y6 <= '0';
+			y7 <= '1';
+			y8 <= '0';
+		elsif (x1='0') and (x2 = "0011") then
+			y1 <= '0';
+			y2 <= '0';
+			y3 <= '1';
+			y4 <= '0';
+			y5 <= '0';
+			y6 <= '1';
+			y7 <= '0';
+			y8 <= '0';
+		elsif (x1='0') and (x2 = "0100") then
+			y1 <= '0';
+			y2 <= '0';
+			y3 <= '0';
+			y4 <= '1';
+			y5 <= '1';
+			y6 <= '0';
+			y7 <= '0';
+			y8 <= '0';
+		elsif (x1='0') and (x2 = "0101") then
+			y1 <= '0';
+			y2 <= '0';
+			y3 <= '0';
+			y4 <= '1';
+			y5 <= '1';
+			y6 <= '0';
+			y7 <= '0';
+			y8 <= '0';
+		elsif (x1='0') and (x2 = "0110") then
+			y1 <= '0';
+			y2 <= '0';
+			y3 <= '1';
+			y4 <= '0';
+			y5 <= '0';
+			y6 <= '1';
+			y7 <= '0';
+			y8 <= '0';
+		elsif (x1='0') and (x2 = "0111") then
+			y1 <= '0';
+			y2 <= '1';
+			y3 <= '0';
+			y4 <= '0';
+			y5 <= '0';
+			y6 <= '0';
+			y7 <= '1';
+			y8 <= '0';
+		elsif (x1='0') and (x2 = "1000") then
+			y1 <= '1';
+			y2 <= '0';
+			y3 <= '0';
+			y4 <= '0';
+			y5 <= '0';
+			y6 <= '0';
+			y7 <= '0';
+			y8 <= '1';
+		elsif x1='1' then
+			y1 <= '1';
+			y2 <= '0';
+			y3 <= '0';
+			y4 <= '0';
+			y5 <= '0';
+			y6 <= '0';
+			y7 <= '0';
+			y8 <= '1';
+		end if;
 
-	with x select y1 <=
-		'1'when"0001",
-		'0'when"0010",
-		'0'when"0011",
-		'0'when"0100",
-		'0'when"0101",
-		'0'when"0110",
-		'0'when"0111",
-		'0'when"1000",
-		'0'when others;
-
-	with x select y2 <=
-		'0'when"0001",
-		'1'when"0010",
-		'0'when"0011",
-		'0'when"0100",
-		'0'when"0101",
-		'0'when"0110",
-		'0'when"0111",
-		'0'when"1000",
-		'0'when others;
-
-	with x select y3 <=
-		'0'when"0001",
-		'0'when"0010",
-		'1'when"0011",
-		'0'when"0100",
-		'0'when"0101",
-		'0'when"0110",
-		'0'when"0111",
-		'0'when"1000",
-		'0'when others;
-
-	with x select y4 <=
-		'0'when"0001",
-		'0'when"0010",
-		'0'when"0011",
-		'1'when"0100",
-		'0'when"0101",
-		'0'when"0110",
-		'0'when"0111",
-		'0'when"1000",
-		'0'when others;
-
-	with x select y5 <=
-		'0'when"0001",
-		'0'when"0010",
-		'0'when"0011",
-		'0'when"0100",
-		'1'when"0101",
-		'0'when"0110",
-		'0'when"0111",
-		'0'when"1000",
-		'0'when others;
-
-	with x select y6 <=
-		'0'when"0001",
-		'0'when"0010",
-		'0'when"0011",
-		'0'when"0100",
-		'0'when"0101",
-		'1'when"0110",
-		'0'when"0111",
-		'0'when"1000",
-		'0'when others;
-
-	with x select y7 <=
-		'0'when"0001",
-		'0'when"0010",
-		'0'when"0011",
-		'0'when"0100",
-		'0'when"0101",
-		'0'when"0110",
-		'1'when"0111",
-		'0'when"1000",
-		'0'when others;
-
-	with x select y8 <=
-		'0'when"0001",
-		'0'when"0010",
-		'0'when"0011",
-		'0'when"0100",
-		'0'when"0101",
-		'0'when"0110",
-		'0'when"0111",
-		'1'when"1000",
-		'0'when others;
-
+end process;
 end bruh;
